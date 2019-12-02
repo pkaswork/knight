@@ -61,13 +61,17 @@ var Run = new Image();
 Run.src = "RizarRun.png";				
 
 var iAttack = new Image(); 
-iAttack.src = "RizarAttack.png";	
+iAttack.src = "RizarAttack.png";
+var attackdx =20;
 
 function updateFrame(){
 	curFrame = ++curFrame % frameCount; 
 	srcX = curFrame * width; 
 	if (Attack)
-		ctx.clearRect(x,y,widthA,heightA);
+		if (left)
+			ctx.clearRect(x-attackdx,y,widthA,heightA);
+		else
+			ctx.clearRect(x,y,widthA,heightA);
 	else
 		ctx.clearRect(x,y,width,height);
     
@@ -112,7 +116,10 @@ function draw(){
 	if (!Attack){
 		ctx.drawImage(Run,srcX,srcY,width,height,x,y,width,height);
 	} else {
-		ctx.drawImage(iAttack,srcXA,srcYA,widthA,heightA,x,y,widthA,heightA);
+		if (right)
+			ctx.drawImage(iAttack,srcXA,srcYA,widthA,heightA,x,y,widthA,heightA);
+		if (left)
+			ctx.drawImage(iAttack,srcXA,srcYA,widthA,heightA,x-attackdx,y,widthA,heightA);
 	}	
 }
 
