@@ -145,4 +145,4 @@ function moveAttack(){
 function stop(){
   clearInterval(rightchar);
 }*/
-setInterval(draw,100);
+setInterval(draw,200);
